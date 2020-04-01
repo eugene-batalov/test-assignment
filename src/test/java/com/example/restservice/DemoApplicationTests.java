@@ -1,6 +1,7 @@
 package com.example.restservice;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -37,6 +38,7 @@ class DemoApplicationTests {
         this.mockMvc.perform(post(COUNTER_NAME_ABCD));
         this.mockMvc.perform(get(COUNTER_NAME_ABCD)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("1")));
+        this.mockMvc.perform(delete(COUNTER_NAME_ABCD));
     }
 
 }
